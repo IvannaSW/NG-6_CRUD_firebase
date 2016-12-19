@@ -1,0 +1,39 @@
+.crud {
+  height: 80rem;
+  padding: 3rem;
+  font-size: 22px;
+  .animate-hide {
+  transition: all linear 1s;
+  line-height: 20px;
+  opacity: 1;
+  padding: 10px;
+  
+  background: white;
+	}
+	.animate-hide.ng-hide {
+  	line-height: 0;
+  	opacity: 0;
+  	padding: 0 10px;
+	}
+
+  table {
+  	width: 100%;
+  	text-align: center;
+  	max-height: 0;
+    th{background-color: #66A3D2;border: 2px solid silver;padding: 15px;}
+  	td {
+  		border: 2px solid silver;
+  		padding: 5px;
+  		width: 20%;
+      background-color:white;
+        	}
+  	tr {
+
+  	}
+  }
+  form {
+  	div {
+  		margin: 20px auto;
+       	}
+  }
+}

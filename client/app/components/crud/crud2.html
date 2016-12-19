@@ -1,0 +1,90 @@
+<navbar></navbar>
+<h1>{{ $ctrl.name }}</h1>
+<h1>{{ $ctrl.indexCounterDisplay}}</h1>
+<section class="crud" layout="column">
+
+
+ 	<table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+			<tr ng-repeat="data in $ctrl.array" style="{{$ctrl.slectedStud(data.checkedBox, $index)}}">
+				<!-- <td ng-repeat="value in data" data-value='$index'>{{value + " " + data.sz_age}}</td> -->
+				<td>{{data.id}}</td>
+				<td>{{data.name}}</td>
+				<td>{{data.surname}}</td>
+				<td>{{data.age}}</td>
+				<td>
+					<span >Sel
+					<input type="checkbox" ng-model="data.checkedBox" ng-click="$ctrl.throwIndex($index)"/>
+						
+					</span>
+					<button ng-click="$ctrl.editStudent($index)">Edit</button>
+				<!--	<button ng-click="$ctrl.deleteStudentsData($index)">Delete</button>-->
+         <md-button class="md-raised md-warn" ng-click="$ctrl.deleteStudentsData($index)">Delete</md-button>
+				</td>
+			</tr>
+        </tbody>
+  	</table>
+
+  	<form  name="angForm">
+
+  		<div ng-show="!$ctrl.displayMenu" class="animate-hide">
+           <input type="text" name="idTag" placeholder="ID" ng-model="$ctrl.idTag" required />
+           <input type="text" name="nameTag" placeholder="name" ng-model="$ctrl.nameTag" required/>
+           <input type="text" name="surnameTag" placeholder="surname" ng-model="$ctrl.surnameTag" required/>
+           <input type="text" name="ageTag" placeholder="age" ng-model="$ctrl.ageTag" required/>
+           <span class="error" ng-show="angForm.ageTag.$error.required">
+       Required!</span>
+            <input type="submit" ng-click='$ctrl.addNewStudent()' value="Add Student"/>
+		</div>
+
+		<div ng-show="$ctrl.displayMenu" class="animate-hide">
+           <input type="text" name="idTag" placeholder="ID" ng-model="$ctrl.idEdit" required/>
+           <input type="text" name="nameTag" placeholder="name" ng-model="$ctrl.nameEdit" required/>
+           <input type="text" name="surnameTag" placeholder="surname" ng-model="$ctrl.surnameEdit" required/>
+           <input type="text" name="ageTag" placeholder="age" ng-model="$ctrl.ageEdit" required/>
+           <input type="submit" ng-click='$ctrl.editStudentsData()' value='Edit Student'/>
+		</div>
+	</form>
+
+
+<div ng-show="$ctrl.displayMenu" class="animate-hide">{{$ctrl.array}}</div>
+
+
+
+<!--   <div class="container"></div>
+<table class="table table-bordered table-striped table-hover">
+<thead>
+  <tr>
+    <td class="col-sm-2">ID</td>
+    <td class="col-sm-2">Name</td>
+    <td class="col-sm-2">Surname</td>
+    <td class="col-sm-2">Age</td>
+    <td class="col-sm-2">Action</td>
+  </tr>
+</thead>
+<tbody>
+<tr ng-repeat="repeater in $ctrl.obj">
+
+  <td class="col-sm-2">{{repeater.id}}</td>
+  <td class="col-sm-2">{{repeater.name}}</td>
+  <td class="col-sm-2">{{repeater.surname}}</td>
+  <td class="col-sm-2">{{repeater.age}}</td>
+  <td class="col-sm-2"><a href="#" class="btn btn-info col-sm-5 edit-button">Edit</a>
+    <a href="#" class="btn btn-danger col-sm-5 col-sm-offset-2 delete-button">Delete</a>
+  </td>
+</tr>
+</tbody>
+</table>
+<div class="container add-button">
+  <a href="#" class='btn btn-success btn-lg col-sm-1'> Add </a>
+</div> -->
+</section>

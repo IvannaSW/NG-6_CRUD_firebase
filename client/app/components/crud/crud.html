@@ -1,0 +1,87 @@
+<navbar></navbar>
+<h1 style="text-align: center;background-color:#66A3D2;">{{ $ctrl.name }}</h1>
+<h1>{{ $ctrl.indexCounterDisplay}}</h1>
+
+<section class="crud" layout="column" style="background-color: white;">
+
+
+ 	<table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+			<tr ng-repeat="data in $ctrl.array" style="{{$ctrl.slectedStud(data.checkedBox, $index)}}">
+				<!-- <td ng-repeat="value in data" data-value='$index'>{{value + " " + data.sz_age}}</td> -->
+				<td style="color:#06266F;">{{data.id}}</td>
+				<td>{{data.name}}</td>
+				<td>{{data.surname}}</td>
+				<td>{{data.age}}</td>
+				<td>
+									
+         <md-button class="md-raised md-primary" ng-click="$ctrl.editStudent($index)">Edit</md-button>
+         <md-button class="md-raised md-warn" ng-click="$ctrl.deleteStudentsData($index)">Delete</md-button>
+         
+				</td>
+			</tr>
+        </tbody>
+  	</table>
+
+
+  <form  name="angForm">
+  		<div ng-show="!$ctrl.displayData" class="animate-hide">
+        <md-content class="md-no-momentum">
+          <md-input-container >
+              <input type="text" name="idStudent" placeholder="ID" ng-model="$ctrl.idStudent" required /> 
+          </md-input-container>
+
+          <md-input-container >
+              <input type="text" name="nameStudent" placeholder="name" ng-model="$ctrl.nameStudent" required/>
+          </md-input-container >
+
+          <md-input-container >
+              <input type="text" name="surnameStudent" placeholder="surname" ng-model="$ctrl.surnameStudent" required/>
+          </md-input-container >
+
+          <md-input-container >
+              <input type="text" name="ageStudent" placeholder="age" ng-model="$ctrl.ageStudent" required/>
+          </md-input-container >
+
+          <md-input-container >
+              <input type="submit" ng-click='$ctrl.addNewStudent()' value="Add new student" style="color:#06266F;" />
+          </md-input-container >
+        </md-content>
+      </div>
+
+		  <div ng-show="$ctrl.displayData" class="animate-hide">
+        <md-content class="md-no-momentum">
+          <md-input-container >
+              <input type="text" name="idStudent" placeholder="ID" ng-model="$ctrl.idEdit" required /> 
+          </md-input-container>
+
+          <md-input-container >
+              <input type="text" name="nameStudent" placeholder="name" ng-model="$ctrl.nameEdit" required/>
+          </md-input-container >
+
+          <md-input-container >
+              <input type="text" name="surnameStudent" placeholder="surname" ng-model="$ctrl.surnameEdit" required/>
+          </md-input-container >
+
+          <md-input-container >
+              <input type="text" name="ageStudent" placeholder="age" ng-model="$ctrl.ageEdit" required/>
+          </md-input-container >
+
+          <md-input-container >
+              <input type="submit" ng-click='$ctrl.editStudentsData()' value="Edit Student" style="color:#06266F;" />
+          </md-input-container >
+        </md-content>
+    </div>
+	</form>
+
+
+</section>
